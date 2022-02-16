@@ -28,3 +28,7 @@ git clone https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav package/lu
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
+
+#2月16日添加手动修正btrfs-progs编译错误的问题
+rm -rf ./feeds/packages/utils/btrfs-progs
+svn co https://github.com/WYC-2020/packages/trunk/utils/btrfs-progs ./feeds/packages/utils/btrfs-progs
