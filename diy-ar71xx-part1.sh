@@ -14,8 +14,11 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
-#echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
+echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
 # 解决helloworld源码缺失
-#wget 'https://github.com/wekingchen/Actions-K2P-OpenWrt/raw/main/myfiles/ssr.zip' --no-check-certificate && sudo unzip -o ssr.zip && sudo rm -f ssr.zip
+mkdir -p package/helloworld
+for i in "dns2socks" "microsocks" "ipt2socks" "pdnsd-alt" "redsocks2" "kcptun"; do \
+  svn checkout "https://github.com/immortalwrt/packages/trunk/net/$i" "package/helloworld/$i"; \
+done
