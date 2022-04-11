@@ -11,13 +11,13 @@
 #
 
 # Modify default IP
-#sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
+# sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
 # 解决shadowsocksr-libev源缺少依赖问题
 # ln -s ./feeds/helloworld/shadowsocksr-libev/ ./package/feeds/helloworld/shadowsocksr-libev
 
 # 使用旧版的travelmate
-#wget 'https://github.com/wekingchen/Actions-OpenWrt/raw/main/myfiles/travelmate1.5.4.zip' --no-check-certificate && sudo unzip -o travelmate1.5.4.zip && sudo rm -f travelmate1.5.4.zip
+# wget 'https://github.com/wekingchen/Actions-OpenWrt/raw/main/myfiles/travelmate1.5.4.zip' --no-check-certificate && sudo unzip -o travelmate1.5.4.zip && sudo rm -f travelmate1.5.4.zip
 
 # 使用新版的travelmate
-wget 'https://github.com/wekingchen/Actions-OpenWrt/raw/main/myfiles/travelmate_new.zip' --no-check-certificate && sudo unzip -o travelmate_new.zip && sudo rm -f travelmate_new.zip
+# wget 'https://github.com/wekingchen/Actions-OpenWrt/raw/main/myfiles/travelmate_new.zip' --no-check-certificate && sudo unzip -o travelmate_new.zip && sudo rm -f travelmate_new.zip
