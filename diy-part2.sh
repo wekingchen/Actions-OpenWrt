@@ -26,6 +26,10 @@
 git clone https://github.com/jerrykuku/go-aliyundrive-webdav package/go-aliyundrive-webdav
 git clone https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav package/luci-app-go-aliyundrive-webdav
 
+# 添加aliyundrive-webdav
+svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav feeds/packages/net/aliyundrive-webdav
+svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav feeds/luci/applications/luci-app-aliyundrive-webdav
+
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
