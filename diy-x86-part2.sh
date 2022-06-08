@@ -23,6 +23,9 @@ sed -i 'set network.$1.gateway='10.10.10.251'' package/base-files/files/bin/conf
 # 使用新版的luci-app-travelmate
 #wget 'https://github.com/wekingchen/Actions-OpenWrt/raw/main/myfiles/luci-app-travelmate.zip' --no-check-certificate && sudo unzip -o luci-app-travelmate.zip && sudo rm -f luci-app-travelmate.zip
 
+# 添加luci-app-passwall代码
+svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
+
 # 添加go-aliyundrive-webdav代码
 git clone https://github.com/jerrykuku/go-aliyundrive-webdav package/go-aliyundrive-webdav
 git clone https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav package/luci-app-go-aliyundrive-webdav
