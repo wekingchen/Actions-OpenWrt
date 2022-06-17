@@ -34,3 +34,7 @@ git clone https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav package/lu
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav feeds/packages/net/aliyundrive-webdav
 rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav feeds/luci/applications/luci-app-aliyundrive-webdav
+
+# 添加Hello World
+git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
+git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
