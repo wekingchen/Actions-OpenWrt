@@ -24,7 +24,7 @@ for i in "dns2socks" "microsocks" "ipt2socks" "pdnsd-alt" "redsocks2"; do \
 done
 
 # 添加luci-app-passwall代码
-svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
+svn co https://github.com/xiaorouji/openwrt-passwall/branches/packages package/
 
 # 添加go-aliyundrive-webdav代码
 git clone https://github.com/jerrykuku/go-aliyundrive-webdav package/go-aliyundrive-webdav
