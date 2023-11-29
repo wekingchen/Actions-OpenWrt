@@ -14,17 +14,17 @@
 sed -i 's/192.168.1.1/10.10.10.252/g' package/base-files/files/bin/config_generate
 sed -i 'set network.$1.gateway='10.10.10.251'' package/base-files/files/bin/config_generate
 
-# 解决shadowsocksr-libev源缺少依赖问题
-# ln -s ./feeds/helloworld/shadowsocksr-libev/ ./package/feeds/helloworld/shadowsocksr-libev
+# 跟随最新版naiveproxy
+rm -rf feeds/passwall_packages/naiveproxy
+git clone -b v5 https://github.com/sbwml/openwrt_helloworld.git
+cp -r openwrt_helloworld/naiveproxy feeds/passwall_packages
+rm -rf openwrt_helloworld
 
 # 解决helloworld源缺少依赖问题
 mkdir -p package/helloworld
 for i in "dns2socks" "microsocks" "ipt2socks" "pdnsd-alt" "redsocks2"; do \
   svn checkout "https://github.com/immortalwrt/packages/trunk/net/$i" "package/helloworld/$i"; \
 done
-
-# 添加luci-app-passwall代码
-# svn co https://github.com/xiaorouji/openwrt-passwall/branches/packages package/passwall
 
 # 添加go-aliyundrive-webdav代码
 git clone https://github.com/jerrykuku/go-aliyundrive-webdav package/go-aliyundrive-webdav
