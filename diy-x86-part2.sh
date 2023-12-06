@@ -22,9 +22,13 @@ rm -rf openwrt_helloworld
 
 # 解决helloworld源缺少依赖问题
 mkdir -p package/helloworld
-for i in "dns2socks" "microsocks" "ipt2socks" "pdnsd-alt" "redsocks2"; do \
-  svn checkout "https://github.com/immortalwrt/packages/trunk/net/$i" "package/helloworld/$i"; \
-done
+git clone https://github.com/immortalwrt/packages.git
+cp -r packages/net/dns2socks package/helloworld/dns2socks
+cp -r packages/net/microsocks package/helloworld/microsocks
+cp -r packages/net/ipt2socks package/helloworld/ipt2socks
+cp -r packages/net/pdnsd-alt package/helloworld/pdnsd-alt
+cp -r packages/net/redsocks2 package/helloworld/redsocks2
+rm -rf packages
 
 # 添加go-aliyundrive-webdav代码
 git clone https://github.com/jerrykuku/go-aliyundrive-webdav package/go-aliyundrive-webdav
@@ -32,16 +36,20 @@ git clone https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav package/lu
 
 # 添加aliyundrive-webdav
 rm -rf feeds/packages/multimedia/aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav feeds/packages/multimedia/aliyundrive-webdav
 rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav feeds/luci/applications/luci-app-aliyundrive-webdav
+git clone https://github.com/messense/aliyundrive-webdav.git
+cp -r aliyundrive-webdav/openwrt/aliyundrive-webdav feeds/packages/multimedia
+cp -r aliyundrive-webdav/openwrt/luci-app-aliyundrive-webdav feeds/luci/applications
+rm -rf aliyundrive-webdav
 
 # 添加Hello World
 git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
 git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 
 # 添加OpenClash
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+git clone https://github.com/vernesong/OpenClash.git
+cp -r OpenClash/luci-app-openclash package/luci-app-openclash
+rm -rf OpenClash
 # 编译 po2lmo (如果有po2lmo可跳过)
 pushd package/luci-app-openclash/tools/po2lmo
 make && sudo make install
