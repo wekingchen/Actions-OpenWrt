@@ -19,7 +19,8 @@ echo "src-git helloworld https://github.com/fw876/helloworld.git;main" >> "feeds
 
 # 解决helloworld源码缺失
 mkdir -p package/helloworld
-for i in "pdnsd-alt" "kcptun"; do \
-  svn checkout "https://github.com/immortalwrt/packages/trunk/net/$i" "package/helloworld/$i"; \
-done
+git clone https://github.com/immortalwrt/packages.git
+cp -r packages/net/pdnsd-alt package/helloworld
+cp -r packages/net/kcptun package/helloworld
+rm -rf packages
 
