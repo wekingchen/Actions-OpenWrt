@@ -29,5 +29,7 @@ git clone https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav package/lu
 # 添加aliyundrive-webdav
 rm -rf feeds/packages/multimedia/aliyundrive-webdav
 rm -rf feeds/luci/applications/luci-app-aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav feeds/packages/multimedia/aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav feeds/luci/applications/luci-app-aliyundrive-webdav
+git clone https://github.com/messense/aliyundrive-webdav.git
+cp -r aliyundrive-webdav/openwrt/aliyundrive-webdav feeds/packages/multimedia
+cp -r aliyundrive-webdav/openwrt/luci-app-aliyundrive-webdav feeds/luci/applications
+rm -rf aliyundrive-webdav
