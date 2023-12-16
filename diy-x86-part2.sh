@@ -30,6 +30,9 @@ cp -r packages/net/pdnsd-alt package/helloworld/pdnsd-alt
 cp -r packages/net/redsocks2 package/helloworld/redsocks2
 rm -rf packages
 
+# 添加luci-app-adguardhome代码
+git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
+
 # 添加go-aliyundrive-webdav代码
 git clone https://github.com/jerrykuku/go-aliyundrive-webdav package/go-aliyundrive-webdav
 git clone https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav package/luci-app-go-aliyundrive-webdav
@@ -47,9 +50,13 @@ git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
 git clone https://github.com/VictC79/luci-app-vssr.git package/luci-app-vssr
 
 # 添加OpenClash
-git clone https://github.com/vernesong/OpenClash.git
-cp -r OpenClash/luci-app-openclash package/luci-app-openclash
-rm -rf OpenClash
+cd package
+git init
+git remote add origin https://github.com/vernesong/OpenClash.git
+git config core.sparseCheckout true
+echo "luci-app-openclash/*" >> .git/info/sparse-checkout
+git pull origin master
+cd ..
 # 编译 po2lmo (如果有po2lmo可跳过)
 pushd package/luci-app-openclash/tools/po2lmo
 make && sudo make install
