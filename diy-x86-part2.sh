@@ -56,6 +56,7 @@ git remote add origin https://github.com/vernesong/OpenClash.git
 git config core.sparseCheckout true
 echo "luci-app-openclash/*" >> .git/info/sparse-checkout
 git pull origin master
+rm -rf .git
 cd ..
 # 编译 po2lmo (如果有po2lmo可跳过)
 pushd package/luci-app-openclash/tools/po2lmo
