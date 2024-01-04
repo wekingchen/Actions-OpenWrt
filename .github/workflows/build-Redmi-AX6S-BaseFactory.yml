@@ -175,13 +175,13 @@ jobs:
         files: /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/bin/targets/mediatek/mt7622/openwrt-*squashfs-factory*
 
     - name: Delete workflow runs
-      uses: GitRML/delete-workflow-runs@main
+      uses: wekingchen/delete-workflow-runs@main
       with:
         retain_days: 1
         keep_minimum_runs: 10
 
     - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@v0.1.0
+      uses: dev-drprasad/delete-older-releases@v0.3.2
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
         keep_latest: 14
