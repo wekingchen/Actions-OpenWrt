@@ -50,14 +50,20 @@ git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
 git clone https://github.com/VictC79/luci-app-vssr.git package/luci-app-vssr
 
 # 添加OpenClash
-cd package
-git init
-git remote add origin https://github.com/vernesong/OpenClash.git
-git config core.sparseCheckout true
-echo "luci-app-openclash/*" >> .git/info/sparse-checkout
-git pull origin master
-rm -rf .git
-cd ..
+# cd package
+# git init
+# git remote add origin https://github.com/vernesong/OpenClash.git
+# git config core.sparseCheckout true
+# echo "luci-app-openclash/*" >> .git/info/sparse-checkout
+# git pull origin master
+# rm -rf .git
+# cd ..
+
+wget https://codeload.github.com/vernesong/OpenClash/zip/refs/heads/master -O OpenClash.zip
+unzip OpenClash.zip
+cp -r OpenClash-master/luci-app-openclash package/
+rm -rf OpenClash.zip OpenClash-master
+
 # 编译 po2lmo (如果有po2lmo可跳过)
 pushd package/luci-app-openclash/tools/po2lmo
 make && sudo make install
