@@ -35,10 +35,7 @@ cp -r aliyundrive-webdav/openwrt/luci-app-aliyundrive-webdav feeds/luci/applicat
 rm -rf aliyundrive-webdav
 
 # 固定shadowsocks-rust版本以免编译失败
-wget https://codeload.github.com/fw876/helloworld/zip/28504024db649b7542347771704abc33c3b1ddc8 -O helloworld.zip
-unzip helloworld.zip
 rm -rf feeds/helloworld/shadowsocks-rust
-cp -r helloworld-28504024db649b7542347771704abc33c3b1ddc8/shadowsocks-rust feeds/helloworld
-rm -rf feeds/passwall_package/shadowsocks-rust
-cp -r helloworld-28504024db649b7542347771704abc33c3b1ddc8/shadowsocks-rust feeds/passwall_package
-rm -rf helloworld.zip helloworld-28504024db649b7542347771704abc33c3b1ddc8
+wget -P feeds/helloworld/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
+rm -rf feeds/passwall_packages/shadowsocks-rust
+wget -P feeds/passwall_packages/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
