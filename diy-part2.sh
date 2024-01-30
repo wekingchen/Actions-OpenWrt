@@ -33,3 +33,10 @@ git clone https://github.com/messense/aliyundrive-webdav.git
 cp -r aliyundrive-webdav/openwrt/aliyundrive-webdav feeds/packages/multimedia
 cp -r aliyundrive-webdav/openwrt/luci-app-aliyundrive-webdav feeds/luci/applications
 rm -rf aliyundrive-webdav
+
+# 固定shadowsocks-rust版本以免编译失败
+wget https://codeload.github.com/fw876/helloworld/zip/28504024db649b7542347771704abc33c3b1ddc8 -O helloworld.zip
+unzip helloworld.zip
+rm -rf feeds/helloworld/shadowsocks-rust
+cp -r helloworld-28504024db649b7542347771704abc33c3b1ddc8/shadowsocks-rust feeds/helloworld
+rm -rf helloworld.zip helloworld-28504024db649b7542347771704abc33c3b1ddc8
