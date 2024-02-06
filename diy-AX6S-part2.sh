@@ -22,5 +22,5 @@ cp -r aliyundrive-webdav/openwrt/luci-app-aliyundrive-webdav feeds/luci/applicat
 rm -rf aliyundrive-webdav
 
 # 固定shadowsocks-rust版本
-rm -rf feeds/small/shadowsocks-rust
-wget -P feeds/small/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
+# rm -rf feeds/small/shadowsocks-rust
+# wget -P feeds/small/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
