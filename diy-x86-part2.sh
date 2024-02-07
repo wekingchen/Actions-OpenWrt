@@ -50,10 +50,10 @@ git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
 git clone https://github.com/VictC79/luci-app-vssr.git package/luci-app-vssr
 
 # 固定shadowsocks-rust版本以免编译失败
-rm -rf feeds/helloworld/shadowsocks-rust
-wget -P feeds/helloworld/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
-rm -rf feeds/passwall_packages/shadowsocks-rust
-wget -P feeds/passwall_packages/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
+# rm -rf feeds/helloworld/shadowsocks-rust
+# wget -P feeds/helloworld/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
+# rm -rf feeds/passwall_packages/shadowsocks-rust
+# wget -P feeds/passwall_packages/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
 
 # 添加OpenClash
 wget https://codeload.github.com/vernesong/OpenClash/zip/refs/heads/master -O OpenClash.zip
