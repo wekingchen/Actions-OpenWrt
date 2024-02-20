@@ -98,6 +98,9 @@ jobs:
         sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
+        sudo apt install gcc-10 g++-10
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
         sudo timedatectl set-timezone "$TZ"
         sudo chown $USER:$GROUPS $GITHUB_WORKSPACE
 
