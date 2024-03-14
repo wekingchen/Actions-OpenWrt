@@ -24,3 +24,8 @@ rm -rf aliyundrive-webdav
 # 固定shadowsocks-rust版本
 # rm -rf feeds/small/shadowsocks-rust
 # wget -P feeds/small/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
+
+# 修改golang源码以编译xray1.8.8+版本
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+sed -i '/-linkmode external \\/d' feeds/packages/lang/golang/golang-package.mk
