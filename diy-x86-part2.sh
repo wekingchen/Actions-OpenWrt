@@ -19,6 +19,10 @@ sed -i 'set network.$1.gateway='10.10.10.251'' package/base-files/files/bin/conf
 #git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 #sed -i '/-linkmode external \\/d' feeds/packages/lang/golang/golang-package.mk
 
+# 修改frp版本为官网最新v0.55.1
+sed -i 's/PKG_VERSION:=0.53.2/PKG_VERSION:=0.55.1/' feeds/packages/net/frp/Makefile
+sed -i 's/PKG_HASH:=ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/PKG_HASH:=c655fdf679aa94ec9abefc625b79bfb12aecf36011e23c207e322a0748c6c693/' feeds/packages/net/frp/Makefile
+
 # 跟随最新版naiveproxy
 rm -rf feeds/passwall_packages/naiveproxy
 rm -rf feeds/helloworld/naiveproxy
