@@ -1,0 +1,24 @@
+--- a/wgengine/router/router_linux.go
++++ b/wgengine/router/router_linux.go
+@@ -90,6 +90,10 @@ func newUserspaceRouter(logf logger.Logf, tunDev tun.Device, netMon *netmon.Moni
+                return nil, err
+        }
+
++       ipt4, err := iptables.NewWithProtocol(iptables.ProtocolIPv4)
++       if err != nil {
++               ipt4, _ = iptables.NewFakeWithProtocol(iptables.ProtocolIPv4)
++       }
+        cmd := osCommandRunner{
+                ambientCapNetAdmin: useAmbientCaps(),
+        }
+@@ -120,6 +124,11 @@ func newUserspaceRouterAdvanced(logf logger.Logf, tunname string, netMon *netmon
+        }
+        r.fixupWSLMTU()
+
++       ipt6, err := iptables.NewWithProtocol(iptables.ProtocolIPv6)
++       if err != nil {
++               ipt6, _ = iptables.NewFakeWithProtocol(iptables.ProtocolIPv6)
++       }
++
+        return r, nil
+ }
