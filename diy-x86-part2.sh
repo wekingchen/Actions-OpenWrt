@@ -26,7 +26,7 @@ sed -i 's/PKG_HASH:=ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b
 # 修改tailscale版本为官网最新v1.62.0 https://github.com/tailscale/tailscale
 sed -i 's/PKG_VERSION:=1.44.3/PKG_VERSION:=1.62.0/' feeds/packages/net/tailscale/Makefile
 sed -i 's/PKG_HASH:=9d0cdccf103d3613ea4671e7092a18e9b7a471f30b4d92defb001510262e48d5/PKG_HASH:=19d91f208a7337b8f2caad030936112c641533d7c1d932a2a8732731e2e80ae5/' feeds/packages/net/tailscale/Makefile
-rm -rf feeds/packages/net/tailscale/patches/020-tailscaled_fake_iptables.patch
+rm -rf feeds/packages/net/tailscale/patches
 
 # 跟随最新版naiveproxy
 rm -rf feeds/passwall_packages/naiveproxy
