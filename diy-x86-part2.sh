@@ -15,9 +15,9 @@ sed -i 's/192.168.1.1/10.10.10.252/g' package/base-files/files/bin/config_genera
 sed -i 'set network.$1.gateway='10.10.10.251'' package/base-files/files/bin/config_generate
 
 # 修改golang源码以编译xray1.8.8+版本
-#rm -rf feeds/packages/lang/golang
-#git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
-#sed -i '/-linkmode external \\/d' feeds/packages/lang/golang/golang-package.mk
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+sed -i '/-linkmode external \\/d' feeds/packages/lang/golang/golang-package.mk
 
 # 修改frp版本为官网最新v0.55.1
 sed -i 's/PKG_VERSION:=0.53.2/PKG_VERSION:=0.55.1/' feeds/packages/net/frp/Makefile
