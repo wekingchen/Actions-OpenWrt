@@ -16,12 +16,6 @@
 # 解决shadowsocksr-libev源缺少依赖问题
 # ln -s ./feeds/helloworld/shadowsocksr-libev/ ./package/feeds/helloworld/shadowsocksr-libev
 
-# 使用旧版的travelmate
-# wget 'https://github.com/wekingchen/Actions-OpenWrt/raw/main/myfiles/travelmate2.04.zip' --no-check-certificate && sudo unzip -o travelmate2.04.zip && sudo rm -f travelmate2.04.zip
-
-# 使用新版的luci-app-travelmate
-#wget 'https://github.com/wekingchen/Actions-OpenWrt/raw/main/myfiles/luci-app-travelmate.zip' --no-check-certificate && sudo unzip -o luci-app-travelmate.zip && sudo rm -f luci-app-travelmate.zip
-
 # 添加go-aliyundrive-webdav代码
 git clone https://github.com/jerrykuku/go-aliyundrive-webdav package/go-aliyundrive-webdav
 git clone https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav package/luci-app-go-aliyundrive-webdav
@@ -33,6 +27,14 @@ git clone https://github.com/messense/aliyundrive-webdav.git
 cp -r aliyundrive-webdav/openwrt/aliyundrive-webdav feeds/packages/multimedia
 cp -r aliyundrive-webdav/openwrt/luci-app-aliyundrive-webdav feeds/luci/applications
 rm -rf aliyundrive-webdav
+
+# 跟随最新版naiveproxy
+rm -rf feeds/passwall_packages/naiveproxy
+rm -rf feeds/helloworld/naiveproxy
+git clone -b v5 https://github.com/sbwml/openwrt_helloworld.git
+cp -r openwrt_helloworld/naiveproxy feeds/passwall_packages
+cp -r openwrt_helloworld/naiveproxy feeds/helloworld
+rm -rf openwrt_helloworld
 
 # 固定shadowsocks-rust版本以免编译失败
 rm -rf feeds/helloworld/shadowsocks-rust
