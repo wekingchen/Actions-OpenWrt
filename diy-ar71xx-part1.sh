@@ -18,9 +18,9 @@ echo "src-git helloworld https://github.com/fw876/helloworld.git;master" >> "fee
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
 # 解决helloworld源码缺失
-mkdir -p package/helloworld
-git clone https://github.com/immortalwrt/packages.git
-cp -r packages/net/pdnsd-alt package/helloworld
-cp -r packages/net/kcptun package/helloworld
-rm -rf packages
+#mkdir -p package/helloworld
+#git clone https://github.com/immortalwrt/packages.git
+#cp -r packages/net/pdnsd-alt package/helloworld
+#cp -r packages/net/kcptun package/helloworld
+#rm -rf packages
 
