@@ -19,13 +19,13 @@ rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 sed -i '/-linkmode external \\/d' feeds/packages/lang/golang/golang-package.mk
 
-# 修改frp版本为官网最新v0.56.0 https://github.com/fatedier/frp
-sed -i 's/PKG_VERSION:=0.53.2/PKG_VERSION:=0.56.0/' feeds/packages/net/frp/Makefile
-sed -i 's/PKG_HASH:=ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/PKG_HASH:=084542bad79f9bed7fb18f31e7763589663e1dca243fe1c3d3dbfec45610ad5a/' feeds/packages/net/frp/Makefile
+# 修改frp版本为官网最新v0.57.0 https://github.com/fatedier/frp
+sed -i 's/PKG_VERSION:=0.53.2/PKG_VERSION:=0.57.0/' feeds/packages/net/frp/Makefile
+sed -i 's/PKG_HASH:=ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/PKG_HASH:=460e3ea0aa18c63f21fd5e31663743dedaed2b2f75772050a7627e8534b5f47d/' feeds/packages/net/frp/Makefile
 
-# 修改tailscale版本为官网最新v1.62.0 https://github.com/tailscale/tailscale
-sed -i 's/PKG_VERSION:=1.44.3/PKG_VERSION:=1.62.0/' feeds/packages/net/tailscale/Makefile
-sed -i 's/PKG_HASH:=9d0cdccf103d3613ea4671e7092a18e9b7a471f30b4d92defb001510262e48d5/PKG_HASH:=19d91f208a7337b8f2caad030936112c641533d7c1d932a2a8732731e2e80ae5/' feeds/packages/net/tailscale/Makefile
+# 修改tailscale版本为官网最新v1.62.1 https://github.com/tailscale/tailscale
+sed -i 's/PKG_VERSION:=1.44.3/PKG_VERSION:=1.62.1/' feeds/packages/net/tailscale/Makefile
+sed -i 's/PKG_HASH:=9d0cdccf103d3613ea4671e7092a18e9b7a471f30b4d92defb001510262e48d5/PKG_HASH:=22737fae37e971fecdf49d6b741b99988868aa3f1e683e67e14b872a2c49ca1c/' feeds/packages/net/tailscale/Makefile
 rm -rf feeds/packages/net/tailscale/patches
 
 # 跟随最新版naiveproxy
