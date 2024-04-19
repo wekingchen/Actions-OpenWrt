@@ -65,6 +65,15 @@ rm -rf aliyundrive-webdav
 git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
 git clone https://github.com/VictC79/luci-app-vssr.git package/luci-app-vssr
 
+# 添加Cloudflared Zero Trust Tunnel
+git clone https://github.com/openwrt/luci.git openwrt-luci
+cp -r openwrt-luci/applications/luci-app-cloudflared package
+rm -rf openwrt-luci
+git clone https://github.com/openwrt/packages.git openwrt-packages
+rm -rf feeds/packages/net/cloudflared
+cp -r openwrt-packages/net/cloudflared feeds/packages/net
+rm -rf openwrt-packages
+
 # 固定shadowsocks-rust版本以免编译失败
 # rm -rf feeds/helloworld/shadowsocks-rust
 # wget -P feeds/helloworld/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
