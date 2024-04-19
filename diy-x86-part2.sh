@@ -73,6 +73,7 @@ git clone https://github.com/openwrt/packages.git openwrt-packages
 rm -rf feeds/packages/net/cloudflared
 cp -r openwrt-packages/net/cloudflared feeds/packages/net
 rm -rf openwrt-packages
+./scripts/feeds install -f luci-app-cloudflared
 
 # 固定shadowsocks-rust版本以免编译失败
 # rm -rf feeds/helloworld/shadowsocks-rust
