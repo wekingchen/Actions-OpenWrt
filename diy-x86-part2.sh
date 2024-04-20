@@ -67,7 +67,8 @@ git clone https://github.com/VictC79/luci-app-vssr.git package/luci-app-vssr
 
 # 添加Cloudflared Zero Trust Tunnel
 git clone https://github.com/openwrt/luci.git openwrt-luci
-cp -r openwrt-luci/applications/luci-app-cloudflared feeds/luci/applications
+cp -r openwrt-luci/applications/luci-app-cloudflared package/
+sed -i 's|include ../../luci.mk|include $(TOPDIR)/feeds/luci/luci.mk|' package/luci-app-cloudflared/Makefile
 rm -rf openwrt-luci
 git clone https://github.com/openwrt/packages.git openwrt-packages
 rm -rf feeds/packages/net/cloudflared
