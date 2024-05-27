@@ -41,3 +41,7 @@ rm -rf feeds/helloworld/shadowsocks-rust
 wget -P feeds/helloworld/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
 rm -rf feeds/passwall_packages/shadowsocks-rust
 wget -P feeds/passwall_packages/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
+
+# 修复dns2tcp编译失败的问题
+rm -rf feeds/passwall_packages/dns2tcp
+wget -P feeds/passwall_packages/dns2tcp https://github.com/sbwml/openwrt_helloworld/raw/v5/dns2tcp/Makefile
