@@ -20,7 +20,7 @@ git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/l
 sed -i '/-linkmode external \\/d' feeds/packages/lang/golang/golang-package.mk
 
 # 修改frp版本为官网最新v0.59.0 https://github.com/fatedier/frp 格式：https://codeload.github.com/fatedier/frp/tar.gz/v${PKG_VERSION}?
-sed -i 's/PKG_VERSION:=0.53.2/PKG_VERSION:=0.58.1/' feeds/packages/net/frp/Makefile
+sed -i 's/PKG_VERSION:=0.53.2/PKG_VERSION:=0.59.0/' feeds/packages/net/frp/Makefile
 sed -i 's/PKG_HASH:=ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/PKG_HASH:=eb4848119a9684b7762171d7633aa5ee29d195e63f53e89e7b549096bdf4a5a9/' feeds/packages/net/frp/Makefile
 
 # 修改tailscale版本为官网最新v1.68.0 https://github.com/tailscale/tailscale 格式：https://codeload.github.com/tailscale/tailscale/tar.gz/v$(PKG_VERSION)?
