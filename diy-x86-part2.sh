@@ -23,9 +23,9 @@ sed -i '/-linkmode external \\/d' feeds/packages/lang/golang/golang-package.mk
 sed -i 's/PKG_VERSION:=0.53.2/PKG_VERSION:=0.59.0/' feeds/packages/net/frp/Makefile
 sed -i 's/PKG_HASH:=ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/PKG_HASH:=eb4848119a9684b7762171d7633aa5ee29d195e63f53e89e7b549096bdf4a5a9/' feeds/packages/net/frp/Makefile
 
-# 修改tailscale版本为官网最新v1.68.0 https://github.com/tailscale/tailscale 格式：https://codeload.github.com/tailscale/tailscale/tar.gz/v$(PKG_VERSION)?
-sed -i 's/PKG_VERSION:=1.66.3/PKG_VERSION:=1.68.0/' feeds/packages/net/tailscale/Makefile
-sed -i 's/PKG_HASH:=51f26a6fcc8b4b6156354bd12a9f029e93c200de9b753ac72d10f70828fb6277/PKG_HASH:=b217e4190e38b9b9799c7749307d207385979ee6da95a16634fc7279d1658314/' feeds/packages/net/tailscale/Makefile
+# 修改tailscale版本为官网最新v1.68.2 https://github.com/tailscale/tailscale 格式：https://codeload.github.com/tailscale/tailscale/tar.gz/v$(PKG_VERSION)?
+sed -i 's/PKG_VERSION:=1.68.1/PKG_VERSION:=1.68.2/' feeds/packages/net/tailscale/Makefile
+sed -i 's/PKG_HASH:=d7fe30282d2f5eabdc76a5a89f11d935ed3a5d93d55f5fd5b40f9a9f49e19490/PKG_HASH:=9d34bd153c485dd0d88d3d76f187b5032046c0807a411ca97f38c8039a9ac659/' feeds/packages/net/tailscale/Makefile
 rm -rf feeds/packages/net/tailscale/patches
 
 # 跟随最新版naiveproxy
