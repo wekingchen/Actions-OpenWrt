@@ -14,6 +14,8 @@
 sed -i 's/192.168.1.1/10.10.10.252/g' package/base-files/files/bin/config_generate
 sed -i 'set network.$1.gateway='10.10.10.251'' package/base-files/files/bin/config_generate
 
+wget https://raw.githubusercontent.com/zxlhhyccc/packages/refs/heads/patch-5/utils/tini/patches/002-Support-POSIX-basename-from-musl-libc.patch -O feeds/packages/utils/tini/patches/002-Support-POSIX-basename-from-musl-libc.patch
+
 # 修改golang源码以编译xray1.8.8+版本
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
