@@ -14,12 +14,6 @@
 sed -i 's/192.168.1.1/10.10.10.252/g' package/base-files/files/bin/config_generate
 sed -i 'set network.$1.gateway='10.10.10.251'' package/base-files/files/bin/config_generate
 
-# 替换musl
-rm -rf toolchain/musl
-wget https://github.com/wekingchen/my-file/raw/master/musl.zip
-unzip musl.zip
-rm -rf musl.zip
-
 # 修改golang源码以编译xray1.8.8+版本
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
