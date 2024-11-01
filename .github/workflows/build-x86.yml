@@ -220,7 +220,7 @@ jobs:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         # files: ${{ env.FIRMWARE }}/openwrt*
-        files: /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/bin/targets/x86-64/generic/openwrt*
+        files: /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/bin/targets/x86-64/generic/*squashfs*
 
     - name: Delete workflow runs
       uses: wekingchen/delete-workflow-runs@main
