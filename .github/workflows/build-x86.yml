@@ -176,12 +176,12 @@ jobs:
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
-    - name: Verify FIRMWARE path and list files
+    - name: Verify FIRMWARE path and recursively list files
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
-        echo "Checking FIRMWARE path and listing files in directory..."
+        echo "Checking FIRMWARE path and recursively listing files in directory..."
         echo "FIRMWARE path is: $FIRMWARE"
-        ls -l $FIRMWARE
+        ls -lR $FIRMWARE
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
