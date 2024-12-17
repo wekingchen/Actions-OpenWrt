@@ -41,13 +41,13 @@ unzip OldPackages.zip && \
 cp -r packages-0f7be9fc93d68986c179829d8199824d3183eb60/net/frp feeds/packages/net/ && \
 rm -rf OldPackages.zip packages-0f7be9fc93d68986c179829d8199824d3183eb60
 
-# 修改frp版本为官网最新v0.61.0 https://github.com/fatedier/frp 格式：https://codeload.github.com/fatedier/frp/tar.gz/v${PKG_VERSION}?
-sed -i 's/PKG_VERSION:=0.53.2/PKG_VERSION:=0.61.0/' feeds/packages/net/frp/Makefile
-sed -i 's/PKG_HASH:=ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/PKG_HASH:=c06a11982ef548372038ec99a6b01cf4f7817a9b88ee5064e41e5132d0ccb7e1/' feeds/packages/net/frp/Makefile
+# 修改frp版本为官网最新v0.61.1 https://github.com/fatedier/frp 格式：https://codeload.github.com/fatedier/frp/tar.gz/v${PKG_VERSION}?
+sed -i 's/PKG_VERSION:=0.53.2/PKG_VERSION:=0.61.1/' feeds/packages/net/frp/Makefile
+sed -i 's/PKG_HASH:=ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/PKG_HASH:=95c567188d5635a7ac8897a6f93ae0568d0ac4892581a96c89874a992dd6a73c/' feeds/packages/net/frp/Makefile
 
-# 修改tailscale版本为官网最新v1.76.0 https://github.com/tailscale/tailscale 格式：https://codeload.github.com/tailscale/tailscale/tar.gz/v$(PKG_VERSION)?
-sed -i 's/PKG_VERSION:=1.70.0/PKG_VERSION:=1.76.0/' feeds/packages/net/tailscale/Makefile
-sed -i 's/PKG_HASH:=8429728708f9694534489daa0a30af58be67f25742597940e7613793275c738f/PKG_HASH:=eaec1fa9a882d877ce6e5fb6ef47b3387124321a8963c66c4c37319106b5c5c2/' feeds/packages/net/tailscale/Makefile
+# 修改tailscale版本为官网最新v1.78.1 https://github.com/tailscale/tailscale 格式：https://codeload.github.com/tailscale/tailscale/tar.gz/v$(PKG_VERSION)?
+sed -i 's/PKG_VERSION:=1.76.1/PKG_VERSION:=1.78.1/' feeds/packages/net/tailscale/Makefile
+sed -i 's/PKG_HASH:=ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/PKG_HASH:=dbc25cc241bb233f183475f003d5508af7b45add1ca548b35a6a6fea91fb91af/' feeds/packages/net/tailscale/Makefile
 rm -rf feeds/packages/net/tailscale/patches
 
 # 跟随最新版naiveproxy
