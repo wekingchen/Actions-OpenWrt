@@ -31,7 +31,6 @@ cp -r feeds/passwall_packages/microsocks feeds/packages/net
 
 # 修改golang源码以编译xray1.8.8+版本
 rm -rf feeds/packages/lang/golang
-#git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 sed -i '/-linkmode external \\/d' feeds/packages/lang/golang/golang-package.mk
 
@@ -45,9 +44,9 @@ rm -rf OldPackages.zip packages-0f7be9fc93d68986c179829d8199824d3183eb60
 sed -i 's/PKG_VERSION:=0.53.2/PKG_VERSION:=0.61.2/' feeds/packages/net/frp/Makefile
 sed -i 's/PKG_HASH:=ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/PKG_HASH:=19600d944e05f7ed95bac53c18cbae6ce7eff859c62b434b0c315ca72acb1d3c/' feeds/packages/net/frp/Makefile
 
-# 修改tailscale版本为官网最新v1.78.1 https://github.com/tailscale/tailscale 格式：https://codeload.github.com/tailscale/tailscale/tar.gz/v$(PKG_VERSION)?
-sed -i 's/PKG_VERSION:=1.76.1/PKG_VERSION:=1.78.1/' feeds/packages/net/tailscale/Makefile
-sed -i 's/PKG_HASH:=ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/PKG_HASH:=dbc25cc241bb233f183475f003d5508af7b45add1ca548b35a6a6fea91fb91af/' feeds/packages/net/tailscale/Makefile
+# 修改tailscale版本为官网最新v1.80.3 https://github.com/tailscale/tailscale 格式：https://codeload.github.com/tailscale/tailscale/tar.gz/v$(PKG_VERSION)?
+sed -i 's/PKG_VERSION:=1.76.1/PKG_VERSION:=1.80.3/' feeds/packages/net/tailscale/Makefile
+sed -i 's/PKG_HASH:=ce87e52fd4e8e52540162a2529c5d73f5f76c6679147a7887058865c9e01ec36/PKG_HASH:=4ea7d4c1a4e86905f330f5d5f5288488cb29d6c586d5bcabf9d02c5481ba740d/' feeds/packages/net/tailscale/Makefile
 rm -rf feeds/packages/net/tailscale/patches
 
 # 跟随最新版naiveproxy
