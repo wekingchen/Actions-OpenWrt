@@ -29,6 +29,10 @@ cp -r feeds/passwall_packages/dns2socks feeds/packages/net
 cp -r feeds/passwall_packages/dns2tcp feeds/packages/net
 cp -r feeds/passwall_packages/microsocks feeds/packages/net
 
+# 升级大雕的rust源码到官方最新版本1.85.1
+sed -i 's/PKG_VERSION:=1.84.0/PKG_VERSION:=1.85.1/' feeds/packages/lang/rust/Makefile
+sed -i 's/PKG_HASH:=15cee7395b07ffde022060455b3140366ec3a12cbbea8f1ef2ff371a9cca51bf/PKG_HASH:=0f2995ca083598757a8d9a293939e569b035799e070f419a686b0996fb94238a/' feeds/packages/lang/rust/Makefile
+
 # 修改golang源码以编译xray1.8.8+版本
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
