@@ -23,6 +23,10 @@ rm -rf aliyundrive-webdav
 
 # 移除 openwrt feeds 自带的核心包
 rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
+cp -r feeds/small/xray-core feeds/packages/net
+cp -r feeds/small/v2ray-core feeds/packages/net
+cp -r feeds/small/v2ray-geodata feeds/packages/net
+cp -r feeds/small/sing-box feeds/packages/net
 
 # 修改golang源码以编译xray1.8.8+版本
 rm -rf feeds/packages/lang/golang
