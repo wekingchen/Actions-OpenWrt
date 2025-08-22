@@ -84,7 +84,7 @@ rm -rf aliyundrive-webdav
 
 # 添加Hello World
 git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
-git clone https://github.com/VictC79/luci-app-vssr.git package/luci-app-vssr
+git clone https://github.com/dqylyln/luci-app-vssr.git package/luci-app-vssr
 
 # 添加Cloudflared Zero Trust Tunnel
 git clone https://github.com/openwrt/luci.git openwrt-luci
