@@ -40,9 +40,9 @@ unzip OldPackages.zip && \
 cp -r packages-0f7be9fc93d68986c179829d8199824d3183eb60/net/frp feeds/packages/net/ && \
 rm -rf OldPackages.zip packages-0f7be9fc93d68986c179829d8199824d3183eb60
 
-# 修改frp版本为官网最新v0.65.0 https://github.com/fatedier/frp 格式：https://codeload.github.com/fatedier/frp/tar.gz/v${PKG_VERSION}?
-sed -i 's/PKG_VERSION:=0.53.2/PKG_VERSION:=0.65.0/' feeds/packages/net/frp/Makefile
-sed -i 's/PKG_HASH:=ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/PKG_HASH:=bbec0d1855e66c96e3a79ff97b8c74d9b1b45ec560aa7132550254d48321f7de/' feeds/packages/net/frp/Makefile
+# 修改frp版本为官网最新v0.66.0 https://github.com/fatedier/frp 格式：https://codeload.github.com/fatedier/frp/tar.gz/v${PKG_VERSION}?
+sed -i 's/PKG_VERSION:=0.53.2/PKG_VERSION:=0.66.0/' feeds/packages/net/frp/Makefile
+sed -i 's/PKG_HASH:=ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/PKG_HASH:=afe1aca9f6e7680a95652e8acf84aef4a74bcefe558b5b91270876066fff3019/' feeds/packages/net/frp/Makefile
 
 # 修改tailscale版本为官网最新v1.86.2 https://github.com/tailscale/tailscale 格式：https://codeload.github.com/tailscale/tailscale/tar.gz/v$(PKG_VERSION)?
 sed -i 's/PKG_VERSION:=1.84.2/PKG_VERSION:=1.86.2/' feeds/packages/net/tailscale/Makefile
