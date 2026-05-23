@@ -58,9 +58,9 @@ define Build/Prepare
 endef
 EOF
 
-# 修改tailscale版本为官网最新v1.98.2 https://github.com/tailscale/tailscale 格式：https://codeload.github.com/tailscale/tailscale/tar.gz/v$(PKG_VERSION)?
-sed -i 's/PKG_VERSION:=1.84.2/PKG_VERSION:=1.98.2/' feeds/packages/net/tailscale/Makefile
-sed -i 's/PKG_HASH:=32673e5552e1176f1028a6a90a4c892d2475c92d1e952ca16156dc523d14d914/PKG_HASH:=a8170bd73e318f6b91f5caab9b0f9bb218e1abcf6d6f7a393d8a44bf8547cff/' feeds/packages/net/tailscale/Makefile
+# 修改tailscale版本为官网最新v1.98.3 https://github.com/tailscale/tailscale 格式：https://codeload.github.com/tailscale/tailscale/tar.gz/v$(PKG_VERSION)?
+sed -i 's/PKG_VERSION:=1.84.2/PKG_VERSION:=1.98.3/' feeds/packages/net/tailscale/Makefile
+sed -i 's/PKG_HASH:=32673e5552e1176f1028a6a90a4c892d2475c92d1e952ca16156dc523d14d914/PKG_HASH:=9283DDBBF0A21AD37C725E09AC302AA96B37F00CA4B4142C00519CF983DE0AA1/' feeds/packages/net/tailscale/Makefile
 rm -rf feeds/packages/net/tailscale/patches
 
 # 跟随最新版naiveproxy
