@@ -60,7 +60,7 @@ EOF
 
 # 修改tailscale版本为官网最新v1.98.3 https://github.com/tailscale/tailscale 格式：https://codeload.github.com/tailscale/tailscale/tar.gz/v$(PKG_VERSION)?
 sed -i 's/PKG_VERSION:=1.84.2/PKG_VERSION:=1.98.3/' feeds/packages/net/tailscale/Makefile
-sed -i 's/PKG_HASH:=32673e5552e1176f1028a6a90a4c892d2475c92d1e952ca16156dc523d14d914/PKG_HASH:=9283ddbb0a21ad37c725e09ac302aa96b37f00ca4b4142c00519cf983de0aa1/' feeds/packages/net/tailscale/Makefile
+sed -i 's/PKG_HASH:=32673e5552e1176f1028a6a90a4c892d2475c92d1e952ca16156dc523d14d914/PKG_HASH:=9283ddbbf0a21ad37c725e09ac302aa96b37f00ca4b4142c00519cf983de0aa1/' feeds/packages/net/tailscale/Makefile
 rm -rf feeds/packages/net/tailscale/patches
 
 # 跟随最新版naiveproxy
