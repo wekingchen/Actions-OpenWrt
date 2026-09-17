@@ -29,9 +29,9 @@ cp -r feeds/passwall_packages/dns2socks feeds/packages/net
 # cp -r feeds/passwall_packages/dns2tcp feeds/packages/net
 cp -r feeds/passwall_packages/microsocks feeds/packages/net
 
-# 修改golang源码以编译xray1.8.8+版本
+# 修改golang源码以编译xray26.9.9+版本
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 27.x feeds/packages/lang/golang
 sed -i '/-linkmode external \\/d' feeds/packages/lang/golang/golang-package.mk
 
 rm -rf feeds/packages/net/frp && \
