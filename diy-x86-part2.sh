@@ -10,6 +10,13 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+# 修复 helloworld 新版 GN 在 Ubuntu 22.04 上的 host 编译兼容问题
+GN_MAKEFILE="feeds/helloworld/gn/Makefile"
+
+if [ -f "$GN_MAKEFILE" ] && ! grep -q 'CC=gcc-12 CXX=g++-12 AR=ar' "$GN_MAKEFILE"; then
+    sed -i '/$(PYTHON).*build\/gen.py/ s|$(PYTHON)|CC=gcc-12 CXX=g++-12 AR=ar $(PYTHON)|' "$GN_MAKEFILE"
+fi
+
 # Modify default IP
 sed -i 's/192.168.1.1/10.10.10.252/g' package/base-files/files/bin/config_generate
 sed -i 'set network.$1.gateway='10.10.10.251'' package/base-files/files/bin/config_generate
