@@ -41,42 +41,46 @@ rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 27.x feeds/packages/lang/golang
 sed -i '/-linkmode external \\/d' feeds/packages/lang/golang/golang-package.mk
 
-rm -rf feeds/packages/net/frp && \
-wget https://github.com/coolsnowwolf/packages/archive/0f7be9fc93d68986c179829d8199824d3183eb60.zip -O OldPackages.zip && \
-unzip OldPackages.zip && \
-cp -r packages-0f7be9fc93d68986c179829d8199824d3183eb60/net/frp feeds/packages/net/ && \
-rm -rf OldPackages.zip packages-0f7be9fc93d68986c179829d8199824d3183eb60
+# =====================================================================
+# 自动更新 FRP 到官方最新稳定版
+# =====================================================================
 
-# 修改frp版本为官网最新v0.68.1 https://github.com/fatedier/frp 格式：https://codeload.github.com/fatedier/frp/tar.gz/v${PKG_VERSION}?
-sed -i 's/PKG_VERSION:=0.53.2/PKG_VERSION:=0.68.1/' feeds/packages/net/frp/Makefile
-sed -i 's/PKG_HASH:=ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b32ec/PKG_HASH:=44ed7107bf35e4f68dc0e77cd5805102effa5301528b89ee5ab0ab379088edc6/' feeds/packages/net/frp/Makefile
+FRP_DIR="feeds/packages/net/frp"
+FRP_MAKEFILE="$FRP_DIR/Makefile"
 
-grep -q 'GO_PKG_TAGS:=noweb' feeds/packages/net/frp/Makefile || \
-sed -i '/GO_PKG_BUILD_PKG:=github.com\/fatedier\/frp\/cmd\/\.\.\./a GO_PKG_TAGS:=noweb' feeds/packages/net/frp/Makefile
+FRP_VERSION="$(
+    git ls-remote --tags --refs https://github.com/fatedier/frp.git \
+    | sed -n 's#.*refs/tags/v\([0-9.]*\)$#\1#p' \
+    | sort -V \
+    | tail -1
+)"
 
-grep -q 'web/frpc/dist' feeds/packages/net/frp/Makefile || cat >> feeds/packages/net/frp/Makefile <<'EOF'
+curl -fL "https://codeload.github.com/fatedier/frp/tar.gz/v${FRP_VERSION}" \
+    -o /tmp/frp.tar.gz
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	mkdir -p $(PKG_BUILD_DIR)/web/frpc/dist
-	mkdir -p $(PKG_BUILD_DIR)/web/frps/dist
-	touch $(PKG_BUILD_DIR)/web/frpc/dist/.keep
-	touch $(PKG_BUILD_DIR)/web/frps/dist/.keep
-endef
-EOF
+FRP_HASH="$(sha256sum /tmp/frp.tar.gz | cut -d' ' -f1)"
 
-# 修改tailscale版本为官网最新v1.98.3 https://github.com/tailscale/tailscale 格式：https://codeload.github.com/tailscale/tailscale/tar.gz/v$(PKG_VERSION)?
-sed -i 's/PKG_VERSION:=1.84.2/PKG_VERSION:=1.98.3/' feeds/packages/net/tailscale/Makefile
-sed -i 's/PKG_HASH:=32673e5552e1176f1028a6a90a4c892d2475c92d1e952ca16156dc523d14d914/PKG_HASH:=9283ddbbf0a21ad37c725e09ac302aa96b37f00ca4b4142c00519cf983de0aa1/' feeds/packages/net/tailscale/Makefile
-rm -rf feeds/packages/net/tailscale/patches
+sed -i -E "s/^PKG_VERSION:=.*/PKG_VERSION:=${FRP_VERSION}/" "$FRP_MAKEFILE"
+sed -i -E "s/^PKG_HASH:=.*/PKG_HASH:=${FRP_HASH}/" "$FRP_MAKEFILE"
 
-# 跟随最新版naiveproxy
-# rm -rf feeds/passwall_packages/naiveproxy
-# rm -rf feeds/helloworld/naiveproxy
-# git clone -b v5 https://github.com/sbwml/openwrt_helloworld.git
-# cp -r openwrt_helloworld/naiveproxy feeds/passwall_packages
-# cp -r openwrt_helloworld/naiveproxy feeds/helloworld
-# rm -rf openwrt_helloworld
+grep -q '^GO_PKG_TAGS:=noweb' "$FRP_MAKEFILE" || \
+    sed -i '/GO_PKG_BUILD_PKG:=github.com\/fatedier\/frp\/cmd\/.../a GO_PKG_TAGS:=noweb' "$FRP_MAKEFILE"
+
+rm -f /tmp/frp.tar.gz
+
+# =====================================================================
+# 自动更新 Tailscale 到官方最新稳定版
+# =====================================================================
+TAILSCALE_MAKEFILE="feeds/packages/net/tailscale/Makefile"
+TAILSCALE_VERSION="$(git ls-remote --tags --refs https://github.com/tailscale/tailscale.git | sed -n 's#.*refs/tags/v\([0-9.]*\)$#\1#p' | sort -V | tail -1)"
+
+curl -fL "https://codeload.github.com/tailscale/tailscale/tar.gz/v${TAILSCALE_VERSION}" -o /tmp/tailscale.tar.gz
+TAILSCALE_HASH="$(sha256sum /tmp/tailscale.tar.gz | cut -d' ' -f1)"
+
+sed -i -E "s/^PKG_VERSION:=.*/PKG_VERSION:=${TAILSCALE_VERSION}/" "$TAILSCALE_MAKEFILE"
+sed -i -E "s/^PKG_HASH:=.*/PKG_HASH:=${TAILSCALE_HASH}/" "$TAILSCALE_MAKEFILE"
+
+rm -rf feeds/packages/net/tailscale/patches /tmp/tailscale.tar.gz
 
 # 解决helloworld源缺少依赖问题
 mkdir -p package/helloworld
@@ -117,12 +121,6 @@ rm -rf feeds/packages/net/cloudflared
 cp -r openwrt-packages/net/cloudflared feeds/packages/net
 rm -rf openwrt-packages
 ./scripts/feeds install -f luci-app-cloudflared
-
-# 固定shadowsocks-rust版本以免编译失败
-# rm -rf feeds/helloworld/shadowsocks-rust
-# wget -P feeds/helloworld/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
-# rm -rf feeds/passwall_packages/shadowsocks-rust
-# wget -P feeds/passwall_packages/shadowsocks-rust https://github.com/wekingchen/my-file/raw/master/shadowsocks-rust/Makefile
 
 # 添加OpenClash
 wget https://codeload.github.com/vernesong/OpenClash/zip/refs/heads/master -O OpenClash.zip
