@@ -44,13 +44,12 @@ sed -i '/-linkmode external \\/d' feeds/packages/lang/golang/golang-package.mk
 # =====================================================================
 # 自动更新 FRP 到官方最新稳定版
 # =====================================================================
-
 FRP_DIR="feeds/packages/net/frp"
 FRP_MAKEFILE="$FRP_DIR/Makefile"
 
 FRP_VERSION="$(
     git ls-remote --tags --refs https://github.com/fatedier/frp.git \
-    | sed -n 's#.*refs/tags/v\([0-9.]*\)$#\1#p' \
+    | sed -n 's#.*refs/tags/v\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\)$#\1#p' \
     | sort -V \
     | tail -1
 )"
@@ -63,8 +62,19 @@ FRP_HASH="$(sha256sum /tmp/frp.tar.gz | cut -d' ' -f1)"
 sed -i -E "s/^PKG_VERSION:=.*/PKG_VERSION:=${FRP_VERSION}/" "$FRP_MAKEFILE"
 sed -i -E "s/^PKG_HASH:=.*/PKG_HASH:=${FRP_HASH}/" "$FRP_MAKEFILE"
 
-grep -q '^GO_PKG_TAGS:=noweb' "$FRP_MAKEFILE" || \
-    sed -i '/GO_PKG_BUILD_PKG:=github.com\/fatedier\/frp\/cmd\/.../a GO_PKG_TAGS:=noweb' "$FRP_MAKEFILE"
+# FRP 0.68.0+ 官方支持 noweb
+if grep -q '^GO_PKG_TAGS:=' "$FRP_MAKEFILE"; then
+    sed -i -E 's/^GO_PKG_TAGS:=.*/GO_PKG_TAGS:=noweb/' "$FRP_MAKEFILE"
+else
+    sed -i '/^GO_PKG_BUILD_PKG:=/a GO_PKG_TAGS:=noweb' "$FRP_MAKEFILE"
+fi
+
+# 当前旧版 OpenWrt recipe 会强制执行 npm/Web 编译，
+# noweb 模式下改为只执行 Go 编译
+sed -i '/^define Build\/Compile$/,/^endef$/c\
+define Build/Compile\
+	$(call GoPackage/Build/Compile)\
+endef' "$FRP_MAKEFILE"
 
 rm -f /tmp/frp.tar.gz
 
